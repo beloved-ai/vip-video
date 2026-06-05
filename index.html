@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP追剧神器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 顶部标题栏 -->
+  <header class="header">
+    <h1>🎬 VIP追剧神器</h1>
+    <span class="disclaimer">仅供学习使用，请勿传播</span>
+  </header>
+
+  <!-- 主内容 -->
+  <div class="main">
+    <!-- 左侧面板：控制区 + 收藏/历史 -->
+    <aside class="sidebar">
+      <!-- 解析源选择 -->
+      <div class="section">
+        <h3>解析源</h3>
+        <div class="source-list" id="sourceList">
+          <button class="source-btn active" data-src="https://jx.xmflv.com/?url=">① 稳定</button>
+          <button class="source-btn" data-src="https://jx.bozrc.com:4433/player/?url=">② 备用1</button>
+          <button class="source-btn" data-src="https://jx.playerjy.com/?url=">③ 备用2</button>
+          <button class="source-btn" data-src="https://www.yemu.xyz/?url=">④ 备用3</button>
+        </div>
+      </div>
+
+      <!-- 收藏夹 -->
+      <div class="section">
+        <div class="section-header">
+          <h3>⭐ 收藏夹</h3>
+          <button class="btn-small" id="addFavBtn" title="收藏当前视频">+ 添加</button>
+        </div>
+        <div id="favList" class="item-list">
+          <div class="empty-hint">暂无收藏</div>
+        </div>
+      </div>
+
+      <!-- 播放历史 -->
+      <div class="section">
+        <div class="section-header">
+          <h3>🕐 播放历史</h3>
+          <button class="btn-small btn-danger" id="clearHistoryBtn">清空</button>
+        </div>
+        <div id="historyList" class="item-list">
+          <div class="empty-hint">暂无历史</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 右侧：播放器区域 -->
+    <div class="player-area">
+      <!-- 输入区 -->
+      <div class="input-bar">
+        <input type="text" id="urlInput" placeholder="粘贴视频网址 (爱奇艺/腾讯/优酷/芒果TV/B站...)" />
+        <button id="playBtn" onclick="playVideo()">▶ 播放</button>
+      </div>
+
+      <!-- 平台快捷入口 -->
+      <div class="platforms">
+        <span class="platform-label">快捷入口:</span>
+        <a href="https://www.iqiyi.com" target="_blank" class="platform-tag">爱奇艺</a>
+        <a href="https://v.qq.com" target="_blank" class="platform-tag">腾讯视频</a>
+        <a href="https://www.youku.com" target="_blank" class="platform-tag">优酷视频</a>
+        <a href="https://www.mgtv.com" target="_blank" class="platform-tag">芒果TV</a>
+        <a href="https://www.bilibili.com" target="_blank" class="platform-tag">B站</a>
+        <a href="https://www.sohu.com" target="_blank" class="platform-tag">搜狐视频</a>
+      </div>
+
+      <!-- 播放器 -->
+      <div class="player-wrapper">
+        <div id="playerPlaceholder" class="player-placeholder">
+          <div class="placeholder-icon">📺</div>
+          <p>粘贴视频网址，点击播放</p>
+          <p class="sub">支持爱奇艺、腾讯视频、优酷、芒果TV、B站等主流平台</p>
+        </div>
+        <iframe id="playerFrame" class="player-frame" frameborder="0" allowfullscreen
+                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                style="display:none;"></iframe>
+      </div>
+
+      <!-- 当前播放信息 -->
+      <div id="nowPlaying" class="now-playing" style="display:none;">
+        <span class="now-label">正在播放:</span>
+        <span id="nowUrl" class="now-url"></span>
+        <button class="btn-small" onclick="copyCurrentUrl()">复制链接</button>
+        <button class="btn-small" onclick="openInNewTab()">新窗口打开</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
