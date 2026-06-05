@@ -32,14 +32,18 @@
       <input type="text" id="searchInput" placeholder="输入剧名，如：庆余年、繁花、三体..." />
       <button onclick="doSearch()">搜索</button>
     </div>
-    <!-- 搜索结果列表 -->
-    <div id="searchResults" class="search-results"></div>
-    <!-- 播放器区域 -->
+    <div id="searchResults" class="search-results">
+      <div class="welcome">
+        <div class="welcome-icon">🎬</div>
+        <h2>搜索你想看的剧</h2>
+        <p>输入剧名即可搜索，支持全网影视资源</p>
+      </div>
+    </div>
     <div id="playerArea" class="player-area" style="display:none;">
       <div class="player-header">
-        <button class="btn-back" onclick="closePlayer()">← 返回</button>
+        <button class="btn-back" onclick="closePlayer()">← 返回列表</button>
         <span id="playerTitle" class="player-title"></span>
-        <button class="btn-tiny" onclick="openPlayerNewTab()">新窗口播放</button>
+        <button class="btn-tiny" onclick="openPlayerNewTab()">新窗口</button>
       </div>
       <iframe id="playFrame" class="play-frame" frameborder="0" allowfullscreen
               allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>
