@@ -2,7 +2,7 @@
 
 let currentMode = 'search';
 let currentSource = 'https://jx.xmflv.com/?url=';
-let currentSite = 'https://bfzy.tv/search.html?wd=';
+let currentSite = 'https://www.360zy.com/vodsearch/-------------.html?wd=';
 let currentUrl = '';
 
 // ==================== 初始化 ====================
