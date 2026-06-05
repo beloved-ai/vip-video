@@ -2,7 +2,7 @@
 
 let currentMode = 'search';
 let currentSource = 'https://jx.xmflv.com/?url=';
-let currentSite = 'https://bfzy.tv';
+let currentSite = 'https://bfzy.tv/search.html?wd=';
 let currentUrl = '';
 
 // ==================== 初始化 ====================
@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.classList.toggle('active', btn.dataset.site === currentSite);
   });
 
+  document.getElementById('searchInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') searchAndOpen();
+  });
   document.getElementById('urlInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') playVideo();
   });
@@ -38,25 +41,24 @@ function switchMode(mode) {
   document.getElementById(mode + 'Mode').classList.add('active');
 }
 
-// ==================== 搜索模式：嵌入完整影视站 ====================
-function switchSite(btn) {
-  document.querySelectorAll('.site-chip').forEach(b => b.classList.remove('active'));
+// ==================== 搜索模式：新窗口打开 ====================
+function selectSite(btn) {
+  document.querySelectorAll('.site-card').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   currentSite = btn.dataset.site;
   localStorage.setItem('vip_site', currentSite);
-
-  document.getElementById('searchPlaceholder').style.display = 'none';
-  const frame = document.getElementById('searchFrame');
-  frame.style.display = 'block';
-  frame.src = currentSite;
 }
 
-// 点击站点按钮时自动加载
-document.querySelectorAll('.site-chip').forEach(btn => {
-  btn.addEventListener('click', function() {
-    switchSite(this);
-  });
-});
+function searchAndOpen() {
+  const keyword = document.getElementById('searchInput').value.trim();
+  if (!keyword) {
+    shake('searchInput');
+    return;
+  }
+
+  const searchUrl = currentSite + encodeURIComponent(keyword);
+  window.open(searchUrl, '_blank');
+}
 
 // ==================== 网址模式 ====================
 function playVideo() {
