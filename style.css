@@ -23,15 +23,8 @@ body {
   flex-shrink: 0;
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.logo {
-  font-size: 24px;
-}
+.header-left { display: flex; align-items: center; gap: 8px; }
+.logo { font-size: 24px; }
 
 .header h1 {
   font-size: 18px;
@@ -51,7 +44,7 @@ body {
   font-weight: 500;
 }
 
-/* ==================== Tab 切换 ==================== */
+/* ==================== Tab ==================== */
 .tabs {
   display: flex;
   background: #fff;
@@ -76,19 +69,9 @@ body {
   gap: 6px;
 }
 
-.tab:hover {
-  color: #667eea;
-  background: #f8f9ff;
-}
-
-.tab.active {
-  color: #667eea;
-  border-bottom-color: #667eea;
-}
-
-.tab-icon {
-  font-size: 16px;
-}
+.tab:hover { color: #667eea; background: #f8f9ff; }
+.tab.active { color: #667eea; border-bottom-color: #667eea; }
+.tab-icon { font-size: 16px; }
 
 /* ==================== 模式面板 ==================== */
 .mode-panel {
@@ -98,11 +81,134 @@ body {
   overflow: hidden;
 }
 
-.mode-panel.active {
+.mode-panel.active { display: flex; }
+
+/* ==================== 搜索模式 - 居中布局 ==================== */
+.center-area {
+  flex: 1;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
 }
 
-/* ==================== 搜索栏 ==================== */
+.hero-icon {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.hero-sub {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.search-bar-center {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: 24px;
+}
+
+.search-bar-center input {
+  flex: 1;
+  padding: 14px 20px;
+  background: #fff;
+  border: 2px solid #e0e4ea;
+  border-radius: 14px;
+  color: #333;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-bar-center input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.12);
+}
+
+.search-bar-center input::placeholder { color: #bbb; }
+
+.search-bar-center button {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.search-bar-center button:hover { opacity: 0.9; }
+.search-bar-center button:active { transform: scale(0.97); }
+
+/* ==================== 站点卡片网格 ==================== */
+.site-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: 16px;
+}
+
+.site-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 14px 8px;
+  background: #fff;
+  border: 2px solid #e8ecf1;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.site-card:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.12);
+}
+
+.site-card.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: transparent;
+}
+
+.site-card.active .site-name { color: #fff; }
+.site-card.active .site-desc { color: rgba(255,255,255,0.7); }
+
+.site-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.site-desc {
+  font-size: 11px;
+  color: #999;
+}
+
+.hint-text {
+  font-size: 12px;
+  color: #bbb;
+}
+
+/* ==================== 网址模式 ==================== */
 .search-bar {
   display: flex;
   gap: 8px;
@@ -127,9 +233,7 @@ body {
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
 }
 
-.search-bar input::placeholder {
-  color: #bbb;
-}
+.search-bar input::placeholder { color: #bbb; }
 
 .search-bar button {
   padding: 12px 32px;
@@ -144,56 +248,8 @@ body {
   white-space: nowrap;
 }
 
-.search-bar button:hover {
-  opacity: 0.9;
-}
-
-.search-bar button:active {
-  transform: scale(0.97);
-}
-
-/* ==================== 站点选择栏 ==================== */
-.site-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  flex-shrink: 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  background: #fff;
-  border-bottom: 1px solid #e8ecf1;
-}
-
-.site-bar::-webkit-scrollbar {
-  display: none;
-}
-
-.site-chip {
-  padding: 7px 18px;
-  background: #f5f7fa;
-  border: 1.5px solid #e0e4ea;
-  border-radius: 20px;
-  color: #555;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-.site-chip:hover {
-  border-color: #667eea;
-  color: #667eea;
-  background: #f0f2ff;
-}
-
-.site-chip.active {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border-color: transparent;
-  color: #fff;
-}
+.search-bar button:hover { opacity: 0.9; }
+.search-bar button:active { transform: scale(0.97); }
 
 /* ==================== 源选择 ==================== */
 .source-row {
@@ -203,17 +259,6 @@ body {
   padding: 0 20px 12px;
   flex-shrink: 0;
   flex-wrap: wrap;
-}
-
-.source-row-scroll {
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.source-row-scroll::-webkit-scrollbar {
-  display: none;
 }
 
 .source-label {
@@ -235,29 +280,12 @@ body {
   display: inline-block;
 }
 
-.source-chip:hover {
-  border-color: #667eea;
-  color: #667eea;
-}
+.source-chip:hover { border-color: #667eea; color: #667eea; }
+.source-chip.active { background: linear-gradient(135deg, #667eea, #764ba2); border-color: transparent; color: #fff; }
+.source-chip.link { background: #f0f4ff; border-color: #d0d8f0; color: #667eea; }
+.source-chip.link:hover { background: #667eea; color: #fff; }
 
-.source-chip.active {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border-color: transparent;
-  color: #fff;
-}
-
-.source-chip.link {
-  background: #f0f4ff;
-  border-color: #d0d8f0;
-  color: #667eea;
-}
-
-.source-chip.link:hover {
-  background: #667eea;
-  color: #fff;
-}
-
-/* ==================== 播放器区域 ==================== */
+/* ==================== 播放器 ==================== */
 .player-frame-wrap {
   flex: 1;
   margin: 0 20px 12px;
@@ -279,32 +307,12 @@ body {
   background: linear-gradient(135deg, #f8f9ff, #eef1ff);
 }
 
-.placeholder-icon {
-  font-size: 64px;
-  margin-bottom: 16px;
-  opacity: 0.6;
-}
+.placeholder-icon { font-size: 64px; margin-bottom: 16px; opacity: 0.6; }
+.placeholder p { font-size: 16px; color: #667eea; font-weight: 500; margin-bottom: 4px; }
+.placeholder .sub { font-size: 13px; color: #aaa; font-weight: 400; }
+.player-frame { width: 100%; height: 100%; border: none; }
 
-.placeholder p {
-  font-size: 16px;
-  color: #667eea;
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-
-.placeholder .sub {
-  font-size: 13px;
-  color: #aaa;
-  font-weight: 400;
-}
-
-.player-frame {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* ==================== 当前播放信息 ==================== */
+/* ==================== 播放信息 ==================== */
 .now-playing {
   display: flex;
   align-items: center;
@@ -315,21 +323,8 @@ body {
   flex-shrink: 0;
 }
 
-.now-label {
-  font-size: 12px;
-  color: #999;
-  white-space: nowrap;
-}
-
-.now-url {
-  flex: 1;
-  font-size: 12px;
-  color: #667eea;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-family: monospace;
-}
+.now-label { font-size: 12px; color: #999; white-space: nowrap; }
+.now-url { flex: 1; font-size: 12px; color: #667eea; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; }
 
 .btn-tiny {
   padding: 4px 10px;
@@ -342,11 +337,7 @@ body {
   transition: all 0.2s;
 }
 
-.btn-tiny:hover {
-  background: #667eea;
-  color: #fff;
-  border-color: #667eea;
-}
+.btn-tiny:hover { background: #667eea; color: #fff; border-color: #667eea; }
 
 /* ==================== 底部 ==================== */
 .footer {
@@ -369,6 +360,14 @@ body {
 /* ==================== 响应式 ==================== */
 @media (max-width: 600px) {
   .header h1 { font-size: 16px; }
+  .hero-icon { font-size: 44px; }
+  .hero-title { font-size: 18px; }
+  .search-bar-center { flex-direction: column; }
+  .search-bar-center button { width: 100%; }
+  .site-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .site-card { padding: 10px 4px; }
+  .site-name { font-size: 13px; }
+  .site-desc { font-size: 10px; }
   .search-bar { padding: 12px 12px 8px; }
   .search-bar input { padding: 10px 14px; font-size: 14px; }
   .search-bar button { padding: 10px 20px; font-size: 14px; }
