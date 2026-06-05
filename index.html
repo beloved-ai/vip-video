@@ -26,27 +26,51 @@
     </button>
   </div>
 
-  <!-- 搜索模式：直接嵌入完整影视站 -->
+  <!-- 搜索模式 -->
   <div id="searchMode" class="mode-panel active">
-    <div class="site-bar">
-      <span class="source-label">选择站点:</span>
-      <button class="site-chip active" data-site="https://bfzy.tv" onclick="switchSite(this)">暴风</button>
-      <button class="site-chip" data-site="https://www.360zy.com" onclick="switchSite(this)">360</button>
-      <button class="site-chip" data-site="https://www.guangsuzy.com" onclick="switchSite(this)">光速</button>
-      <button class="site-chip" data-site="https://www.ffzy.tv" onclick="switchSite(this)">非凡</button>
-      <button class="site-chip" data-site="https://www.hongniuzy2.com" onclick="switchSite(this)">红牛</button>
-      <button class="site-chip" data-site="https://www.yongjiuzy1.com" onclick="switchSite(this)">永久</button>
-      <button class="site-chip" data-site="https://subo988.com" onclick="switchSite(this)">速播</button>
-    </div>
-    <div class="player-frame-wrap">
-      <div id="searchPlaceholder" class="placeholder">
-        <div class="placeholder-icon">🎬</div>
-        <p>选择一个站点开始观看</p>
-        <p class="sub">在站内搜索剧名，直接播放（含VIP内容）</p>
+    <div class="center-area">
+      <div class="hero-icon">🎬</div>
+      <h2 class="hero-title">搜索你想看的剧</h2>
+      <p class="hero-sub">输入剧名，选择站点，一键搜索播放（含VIP内容）</p>
+      <div class="search-bar-center">
+        <input type="text" id="searchInput" placeholder="输入剧名，如：庆余年、繁花、三体..." />
+        <button onclick="searchAndOpen()">🔍 搜索</button>
       </div>
-      <iframe id="searchFrame" class="player-frame" frameborder="0" allowfullscreen
-              allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-              style="display:none;"></iframe>
+      <div class="site-grid">
+        <button class="site-card active" data-site="https://bfzy.tv/search.html?wd=" onclick="selectSite(this)">
+          <span class="site-name">暴风</span>
+          <span class="site-desc">资源丰富</span>
+        </button>
+        <button class="site-card" data-site="https://www.360zy.com/vodsearch/-------------.html?wd=" onclick="selectSite(this)">
+          <span class="site-name">360</span>
+          <span class="site-desc">多线路</span>
+        </button>
+        <button class="site-card" data-site="https://www.guangsuzy.com/vodsearch/-------------.html?wd=" onclick="selectSite(this)">
+          <span class="site-name">光速</span>
+          <span class="site-desc">速度快</span>
+        </button>
+        <button class="site-card" data-site="https://www.ffzy.tv/vodsearch/-------------.html?wd=" onclick="selectSite(this)">
+          <span class="site-name">非凡</span>
+          <span class="site-desc">高清源</span>
+        </button>
+        <button class="site-card" data-site="https://www.hongniuzy2.com/vodsearch/-------------.html?wd=" onclick="selectSite(this)">
+          <span class="site-name">红牛</span>
+          <span class="site-desc">多源聚合</span>
+        </button>
+        <button class="site-card" data-site="https://www.yongjiuzy1.com/vodsearch/-------------.html?wd=" onclick="selectSite(this)">
+          <span class="site-name">永久</span>
+          <span class="site-desc">稳定更新</span>
+        </button>
+        <button class="site-card" data-site="https://subo988.com/search.html?wd=" onclick="selectSite(this)">
+          <span class="site-name">速播</span>
+          <span class="site-desc">快速播放</span>
+        </button>
+        <button class="site-card" data-site="https://sdzy.tv/search.html?wd=" onclick="selectSite(this)">
+          <span class="site-name">闪电</span>
+          <span class="site-desc">即时更新</span>
+        </button>
+      </div>
+      <p class="hint-text">💡 搜不到？换一个站点再试</p>
     </div>
   </div>
 
