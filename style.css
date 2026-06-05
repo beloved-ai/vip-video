@@ -162,6 +162,17 @@ body {
   flex-wrap: wrap;
 }
 
+.source-row-scroll {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.source-row-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .source-label {
   font-size: 13px;
   color: #999;
