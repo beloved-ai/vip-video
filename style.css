@@ -1,0 +1,371 @@
+/* ==================== 全局 ==================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Microsoft YaHei', sans-serif;
+  background: #0e0e12;
+  color: #e0e0e0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ==================== 头部 ==================== */
+.header {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #2a2a4a;
+  flex-shrink: 0;
+}
+
+.header h1 {
+  font-size: 20px;
+  background: linear-gradient(90deg, #ff6b6b, #ffd93d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.disclaimer {
+  font-size: 12px;
+  color: #ff6b6b;
+  opacity: 0.8;
+}
+
+/* ==================== 主布局 ==================== */
+.main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ==================== 左侧边栏 ==================== */
+.sidebar {
+  width: 260px;
+  background: #13131a;
+  border-right: 1px solid #2a2a3a;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.section {
+  padding: 16px;
+  border-bottom: 1px solid #1e1e2e;
+}
+
+.section h3 {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.section-header h3 {
+  margin-bottom: 0;
+}
+
+/* ==================== 解析源 ==================== */
+.source-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.source-btn {
+  padding: 8px 12px;
+  background: #1e1e2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 6px;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 13px;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.source-btn:hover {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.source-btn.active {
+  background: #2a1a1a;
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+/* ==================== 列表项 ==================== */
+.item-list {
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.item-list::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 2px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  background: #1a1a28;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  gap: 8px;
+}
+
+.list-item:hover {
+  background: #252540;
+}
+
+.list-item .item-name {
+  flex: 1;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #ddd;
+}
+
+.list-item .item-time {
+  font-size: 11px;
+  color: #666;
+  white-space: nowrap;
+}
+
+.list-item .item-delete {
+  color: #666;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 4px;
+  transition: color 0.2s;
+}
+
+.list-item .item-delete:hover {
+  color: #ff4444;
+}
+
+.empty-hint {
+  font-size: 13px;
+  color: #555;
+  text-align: center;
+  padding: 12px;
+}
+
+/* ==================== 按钮 ==================== */
+.btn-small {
+  padding: 4px 10px;
+  background: #2a2a4a;
+  border: 1px solid #3a3a5a;
+  border-radius: 4px;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.btn-small:hover {
+  background: #3a3a5a;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #4a2020;
+  border-color: #ff4444;
+  color: #ff4444;
+}
+
+/* ==================== 右侧播放区 ==================== */
+.player-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+  overflow: hidden;
+}
+
+/* ==================== 输入栏 ==================== */
+.input-bar {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.input-bar input {
+  flex: 1;
+  padding: 10px 16px;
+  background: #1a1a28;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-bar input:focus {
+  border-color: #ff6b6b;
+}
+
+.input-bar input::placeholder {
+  color: #555;
+}
+
+#playBtn {
+  padding: 10px 28px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+#playBtn:hover {
+  opacity: 0.85;
+}
+
+/* ==================== 平台入口 ==================== */
+.platforms {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.platform-label {
+  font-size: 13px;
+  color: #666;
+}
+
+.platform-tag {
+  padding: 4px 12px;
+  background: #1a1a28;
+  border: 1px solid #2a2a3a;
+  border-radius: 14px;
+  color: #aaa;
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.platform-tag:hover {
+  border-color: #6b9bff;
+  color: #6b9bff;
+}
+
+/* ==================== 播放器 ==================== */
+.player-wrapper {
+  flex: 1;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  min-height: 0;
+}
+
+.player-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+}
+
+.placeholder-icon {
+  font-size: 72px;
+  margin-bottom: 16px;
+}
+
+.player-placeholder p {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.player-placeholder .sub {
+  font-size: 13px;
+  color: #333;
+}
+
+.player-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ==================== 当前播放信息 ==================== */
+.now-playing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #1a1a28;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.now-label {
+  font-size: 12px;
+  color: #666;
+  white-space: nowrap;
+}
+
+.now-url {
+  flex: 1;
+  font-size: 12px;
+  color: #aaa;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: monospace;
+}
+
+/* ==================== 响应式 ==================== */
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    max-height: 200px;
+    border-right: none;
+    border-bottom: 1px solid #2a2a3a;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .section {
+    min-width: 200px;
+    border-bottom: none;
+    border-right: 1px solid #1e1e2e;
+  }
+}
