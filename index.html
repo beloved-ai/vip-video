@@ -28,33 +28,21 @@
 
   <!-- 搜索模式 -->
   <div id="searchMode" class="mode-panel active">
-    <div class="center-area">
-      <div class="hero-icon">🎬</div>
-      <h2 class="hero-title">搜索你想看的剧</h2>
-      <p class="hero-sub">输入剧名，选择站点，一键搜索播放（含VIP内容）</p>
-      <div class="search-bar-center">
-        <input type="text" id="searchInput" placeholder="输入剧名，如：庆余年、繁花、三体..." />
-        <button onclick="searchAndOpen()">🔍 搜索</button>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="输入剧名，如：庆余年、繁花、三体..." />
+      <button onclick="doSearch()">搜索</button>
+    </div>
+    <!-- 搜索结果列表 -->
+    <div id="searchResults" class="search-results"></div>
+    <!-- 播放器区域 -->
+    <div id="playerArea" class="player-area" style="display:none;">
+      <div class="player-header">
+        <button class="btn-back" onclick="closePlayer()">← 返回</button>
+        <span id="playerTitle" class="player-title"></span>
+        <button class="btn-tiny" onclick="openPlayerNewTab()">新窗口播放</button>
       </div>
-      <div class="site-grid">
-        <button class="site-card active" data-site="https://www.360zy.com/vodsearch/-------------.html?wd=" onclick="selectSite(this)">
-          <span class="site-name">360</span>
-          <span class="site-desc">多线路</span>
-        </button>
-        <button class="site-card" data-site="https://subo988.com/search.html?wd=" onclick="selectSite(this)">
-          <span class="site-name">速播</span>
-          <span class="site-desc">播放快</span>
-        </button>
-        <button class="site-card" data-site="https://www.wlzy.tv/vodsearch/-------------.html?wd=" onclick="selectSite(this)">
-          <span class="site-name">卧龙</span>
-          <span class="site-desc">高清源</span>
-        </button>
-        <button class="site-card" data-site="https://www.tkzyw.com/vodsearch/-------------.html?wd=" onclick="selectSite(this)">
-          <span class="site-name">天空</span>
-          <span class="site-desc">资源全</span>
-        </button>
-      </div>
-      <p class="hint-text">💡 搜不到？换一个站点再试</p>
+      <iframe id="playFrame" class="play-frame" frameborder="0" allowfullscreen
+              allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>
     </div>
   </div>
 
@@ -62,14 +50,14 @@
   <div id="urlMode" class="mode-panel">
     <div class="search-bar">
       <input type="text" id="urlInput" placeholder="粘贴视频网址 (爱奇艺/腾讯/优酷/芒果TV/B站...)" />
-      <button onclick="playVideo()">播放</button>
+      <button onclick="playUrl()">播放</button>
     </div>
     <div class="source-row">
       <span class="source-label">解析源:</span>
-      <button class="source-chip active" data-src="https://jx.xmflv.com/?url=" onclick="switchSource(this)">XMFLV</button>
-      <button class="source-chip" data-src="https://jx.bozrc.com:4433/player/?url=" onclick="switchSource(this)">备用1</button>
-      <button class="source-chip" data-src="https://jx.playerjy.com/?url=" onclick="switchSource(this)">备用2</button>
-      <button class="source-chip" data-src="https://www.yemu.xyz/?url=" onclick="switchSource(this)">备用3</button>
+      <button class="source-chip active" data-src="https://jx.xmflv.com/?url=" onclick="switchSrc(this)">XMFLV</button>
+      <button class="source-chip" data-src="https://jx.playerjy.com/?url=" onclick="switchSrc(this)">备用1</button>
+      <button class="source-chip" data-src="https://www.yemu.xyz/?url=" onclick="switchSrc(this)">备用2</button>
+      <button class="source-chip" data-src="https://jx.m3u8.tv/jiexi/?url=" onclick="switchSrc(this)">备用3</button>
       <a class="source-chip link" href="https://www.iqiyi.com" target="_blank">爱奇艺</a>
       <a class="source-chip link" href="https://v.qq.com" target="_blank">腾讯</a>
       <a class="source-chip link" href="https://www.youku.com" target="_blank">优酷</a>
@@ -78,17 +66,11 @@
       <div id="urlPlaceholder" class="placeholder">
         <div class="placeholder-icon">📺</div>
         <p>粘贴视频网址，点击播放</p>
-        <p class="sub">支持爱奇艺、腾讯视频、优酷、芒果TV、B站等主流平台</p>
+        <p class="sub">支持爱奇艺、腾讯视频、优酷等主流平台VIP内容解析</p>
       </div>
       <iframe id="urlFrame" class="player-frame" frameborder="0" allowfullscreen
               allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
               style="display:none;"></iframe>
-    </div>
-    <div id="nowPlaying" class="now-playing" style="display:none;">
-      <span class="now-label">正在播放:</span>
-      <span id="nowUrl" class="now-url"></span>
-      <button class="btn-tiny" onclick="copyCurrentUrl()">复制</button>
-      <button class="btn-tiny" onclick="openInNewTab()">新窗口</button>
     </div>
   </div>
 
