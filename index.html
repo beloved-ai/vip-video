@@ -26,33 +26,23 @@
     </button>
   </div>
 
-  <!-- 搜索模式 -->
+  <!-- 搜索模式：直接嵌入完整影视站 -->
   <div id="searchMode" class="mode-panel active">
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="输入剧名，如：庆余年、繁花、三体..." />
-      <button onclick="searchVideo()">搜索</button>
-    </div>
-    <div class="source-row source-row-scroll">
-      <span class="source-label">搜索源:</span>
-      <button class="source-chip active" data-search="https://www.freeok.vip/search/-------------.html?wd=" onclick="switchSearchSource(this)">FreeOK</button>
-      <button class="source-chip" data-search="https://bfzy.tv/search.html?wd=" onclick="switchSearchSource(this)">暴风</button>
-      <button class="source-chip" data-search="https://www.heimuer.tv/search.html?wd=" onclick="switchSearchSource(this)">黑木耳</button>
-      <button class="source-chip" data-search="https://www.nfmovies.com/search.html?wd=" onclick="switchSearchSource(this)">非凡</button>
-      <button class="source-chip" data-search="https://cj.lziapi.com/api.php/provide/vod/?ac=list&wd=" onclick="switchSearchSource(this)">量子</button>
-      <button class="source-chip" data-search="https://www.360zy.com/vodsearch/-------------.html?wd=" onclick="switchSearchSource(this)">360</button>
-      <button class="source-chip" data-search="https://sdzy.tv/search.html?wd=" onclick="switchSearchSource(this)">闪电</button>
-      <button class="source-chip" data-search="https://www.guangsuzy.com/vodsearch/-------------.html?wd=" onclick="switchSearchSource(this)">光速</button>
-      <button class="source-chip" data-search="https://www.hongniuzy2.com/vodsearch/-------------.html?wd=" onclick="switchSearchSource(this)">红牛</button>
-      <button class="source-chip" data-search="https://www.ffzy.tv/vodsearch/-------------.html?wd=" onclick="switchSearchSource(this)">非凡资源</button>
-      <button class="source-chip" data-search="https://www.yongjiuzy1.com/vodsearch/-------------.html?wd=" onclick="switchSearchSource(this)">永久</button>
-      <button class="source-chip" data-search="https://subo988.com/search.html?wd=" onclick="switchSearchSource(this)">速播</button>
-      <button class="source-chip" data-search="https://www.qianmo.cc/search/-------------.html?wd=" onclick="switchSearchSource(this)">阡陌</button>
+    <div class="site-bar">
+      <span class="source-label">选择站点:</span>
+      <button class="site-chip active" data-site="https://bfzy.tv" onclick="switchSite(this)">暴风</button>
+      <button class="site-chip" data-site="https://www.360zy.com" onclick="switchSite(this)">360</button>
+      <button class="site-chip" data-site="https://www.guangsuzy.com" onclick="switchSite(this)">光速</button>
+      <button class="site-chip" data-site="https://www.ffzy.tv" onclick="switchSite(this)">非凡</button>
+      <button class="site-chip" data-site="https://www.hongniuzy2.com" onclick="switchSite(this)">红牛</button>
+      <button class="site-chip" data-site="https://www.yongjiuzy1.com" onclick="switchSite(this)">永久</button>
+      <button class="site-chip" data-site="https://subo988.com" onclick="switchSite(this)">速播</button>
     </div>
     <div class="player-frame-wrap">
       <div id="searchPlaceholder" class="placeholder">
-        <div class="placeholder-icon">🔍</div>
-        <p>输入剧名开始搜索</p>
-        <p class="sub">聚合搜索全网影视资源，点击即可播放</p>
+        <div class="placeholder-icon">🎬</div>
+        <p>选择一个站点开始观看</p>
+        <p class="sub">在站内搜索剧名，直接播放（含VIP内容）</p>
       </div>
       <iframe id="searchFrame" class="player-frame" frameborder="0" allowfullscreen
               allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
