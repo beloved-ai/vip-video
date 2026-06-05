@@ -1,6 +1,7 @@
 // ==================== VIP追剧神器 ====================
 
 const API_BASE = 'https://api.guangsuapi.com/api.php/provide/vod/?ac=videolist&wd=';
+const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
 let currentSrc = 'https://jx.xmflv.com/?url=';
 let currentPlayUrl = '';
 
@@ -40,7 +41,8 @@ async function doSearch() {
   closePlayer();
 
   try {
-    const resp = await fetch(API_BASE + encodeURIComponent(keyword));
+    const apiUrl = API_BASE + encodeURIComponent(keyword);
+    const resp = await fetch(CORS_PROXY + encodeURIComponent(apiUrl));
     const data = await resp.json();
 
     if (!data.list || data.list.length === 0) {
