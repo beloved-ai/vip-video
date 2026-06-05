@@ -1,33 +1,26 @@
 // ==================== VIP追剧神器 ====================
 
-// 状态
 let currentMode = 'search';
 let currentSource = 'https://jx.xmflv.com/?url=';
-let currentSearchSource = 'https://www.freeok.vip/search/-------------.html?wd=';
+let currentSite = 'https://bfzy.tv';
 let currentUrl = '';
 
 // ==================== 初始化 ====================
 document.addEventListener('DOMContentLoaded', () => {
-  // 恢复偏好
   const savedSource = localStorage.getItem('vip_source');
   if (savedSource) currentSource = savedSource;
-  const savedSearch = localStorage.getItem('vip_search_source');
-  if (savedSearch) currentSearchSource = savedSearch;
+  const savedSite = localStorage.getItem('vip_site');
+  if (savedSite) currentSite = savedSite;
   const savedMode = localStorage.getItem('vip_mode');
   if (savedMode) switchMode(savedMode);
 
-  // 设置按钮状态
   document.querySelectorAll('[data-src]').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.src === currentSource);
   });
-  document.querySelectorAll('[data-search]').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.search === currentSearchSource);
+  document.querySelectorAll('[data-site]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.site === currentSite);
   });
 
-  // 回车事件
-  document.getElementById('searchInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') searchVideo();
-  });
   document.getElementById('urlInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') playVideo();
   });
@@ -45,32 +38,25 @@ function switchMode(mode) {
   document.getElementById(mode + 'Mode').classList.add('active');
 }
 
-// ==================== 搜索模式 ====================
-function searchVideo() {
-  const keyword = document.getElementById('searchInput').value.trim();
-  if (!keyword) {
-    shake('searchInput');
-    return;
-  }
-
-  const searchUrl = currentSearchSource + encodeURIComponent(keyword);
+// ==================== 搜索模式：嵌入完整影视站 ====================
+function switchSite(btn) {
+  document.querySelectorAll('.site-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentSite = btn.dataset.site;
+  localStorage.setItem('vip_site', currentSite);
 
   document.getElementById('searchPlaceholder').style.display = 'none';
   const frame = document.getElementById('searchFrame');
   frame.style.display = 'block';
-  frame.src = searchUrl;
+  frame.src = currentSite;
 }
 
-function switchSearchSource(btn) {
-  document.querySelectorAll('[data-search]').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  currentSearchSource = btn.dataset.search;
-  localStorage.setItem('vip_search_source', currentSearchSource);
-
-  // 如果有搜索词，自动重新搜索
-  const keyword = document.getElementById('searchInput').value.trim();
-  if (keyword) searchVideo();
-}
+// 点击站点按钮时自动加载
+document.querySelectorAll('.site-chip').forEach(btn => {
+  btn.addEventListener('click', function() {
+    switchSite(this);
+  });
+});
 
 // ==================== 网址模式 ====================
 function playVideo() {
