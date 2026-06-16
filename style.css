@@ -39,7 +39,57 @@ body {
 .mode-panel { display: none; flex: 1; flex-direction: column; overflow: hidden; }
 .mode-panel.active { display: flex; }
 
-/* 搜索栏 */
+/* 搜索模式 - 居中 */
+.center-area {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 20px;
+}
+.hero-icon { font-size: 52px; margin-bottom: 10px; }
+.hero-title { font-size: 20px; font-weight: 700; color: #222; margin-bottom: 4px; }
+.hero-sub { font-size: 13px; color: #999; margin-bottom: 18px; }
+.search-bar-center {
+  display: flex; gap: 8px; width: 100%; max-width: 480px; margin-bottom: 20px;
+}
+.search-bar-center input {
+  flex: 1; padding: 13px 16px; background: #fff;
+  border: 2px solid #e5e7eb; border-radius: 12px;
+  font-size: 14px; outline: none; color: #333;
+}
+.search-bar-center input:focus {
+  border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
+}
+.search-bar-center input::placeholder { color: #bbb; }
+.search-bar-center button {
+  padding: 13px 24px; background: linear-gradient(135deg, #6366f1, #a855f7);
+  border: none; border-radius: 12px; color: #fff;
+  font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+
+/* 站点卡片 */
+.site-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px; width: 100%; max-width: 480px; margin-bottom: 14px;
+}
+.site-card {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 14px 6px; background: #fff;
+  border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer;
+  transition: all 0.2s;
+}
+.site-card:hover {
+  border-color: #6366f1; transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99,102,241,0.1);
+}
+.site-card.active {
+  background: linear-gradient(135deg, #6366f1, #a855f7); border-color: transparent;
+}
+.site-card.active .site-name { color: #fff; }
+.site-card.active .site-desc { color: rgba(255,255,255,0.7); }
+.site-name { font-size: 14px; font-weight: 600; color: #333; }
+.site-desc { font-size: 11px; color: #999; }
+.hint-text { font-size: 12px; color: #bbb; }
+
+/* 网址模式 */
 .search-bar { display: flex; gap: 8px; padding: 12px; flex-shrink: 0; }
 .search-bar input {
   flex: 1; padding: 11px 14px; background: #fff;
@@ -53,57 +103,6 @@ body {
   border: none; border-radius: 10px; color: #fff;
   font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
 }
-
-/* 搜索结果 */
-.search-results { flex: 1; overflow-y: auto; padding: 0 12px 12px; }
-
-.welcome {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 60px 20px; color: #999;
-}
-.welcome-icon { font-size: 56px; margin-bottom: 12px; opacity: 0.5; }
-.welcome h2 { font-size: 18px; color: #555; margin-bottom: 4px; }
-.welcome p { font-size: 13px; }
-
-.result-card {
-  background: #fff; border-radius: 12px; padding: 14px;
-  margin-bottom: 10px; border: 1px solid #eee;
-}
-.result-top { display: flex; gap: 12px; margin-bottom: 10px; }
-.result-cover {
-  width: 80px; height: 108px; border-radius: 8px;
-  object-fit: cover; background: #f0f0f0; flex-shrink: 0;
-}
-.result-info { flex: 1; min-width: 0; }
-.result-title { font-size: 15px; font-weight: 700; color: #111; margin-bottom: 3px; }
-.result-meta { font-size: 11px; color: #999; margin-bottom: 4px; }
-.result-desc {
-  font-size: 12px; color: #777; line-height: 1.4;
-  display: -webkit-box; -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; overflow: hidden;
-}
-.result-episodes { display: flex; flex-wrap: wrap; gap: 5px; }
-.ep-btn {
-  padding: 5px 12px; background: #f8f9fb; border: 1px solid #e5e7eb;
-  border-radius: 6px; color: #555; font-size: 12px; cursor: pointer;
-}
-.ep-btn:hover { border-color: #6366f1; color: #6366f1; background: #f0f0ff; }
-
-/* 播放器 */
-.player-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-.player-header {
-  display: flex; align-items: center; gap: 10px;
-  padding: 8px 12px; background: #fff; border-bottom: 1px solid #eee; flex-shrink: 0;
-}
-.btn-back {
-  padding: 5px 12px; background: #f5f5f5; border: 1px solid #ddd;
-  border-radius: 6px; color: #555; cursor: pointer; font-size: 12px;
-}
-.btn-back:hover { background: #6366f1; color: #fff; border-color: #6366f1; }
-.player-title { flex: 1; font-size: 13px; font-weight: 600; color: #333; }
-.play-frame { flex: 1; border: none; width: 100%; }
-
-/* 网址模式 */
 .source-row {
   display: flex; align-items: center; gap: 6px;
   padding: 0 12px 10px; flex-shrink: 0; flex-wrap: wrap;
@@ -118,7 +117,6 @@ body {
 .source-chip.active { background: linear-gradient(135deg, #6366f1, #a855f7); border-color: transparent; color: #fff; }
 .source-chip.link { background: #f5f3ff; border-color: #ddd; color: #6366f1; }
 .source-chip.link:hover { background: #6366f1; color: #fff; }
-
 .player-frame-wrap {
   flex: 1; margin: 0 12px 10px; background: #000;
   border-radius: 12px; overflow: hidden; position: relative; min-height: 0;
@@ -132,30 +130,34 @@ body {
 .placeholder p { font-size: 15px; color: #6366f1; font-weight: 500; }
 .placeholder .sub { font-size: 12px; color: #aaa; margin-top: 2px; }
 .player-frame { width: 100%; height: 100%; border: none; }
-
+.now-playing {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; background: #fff;
+  border-top: 1px solid #eee; flex-shrink: 0;
+}
+.now-label { font-size: 11px; color: #999; }
+.now-url { flex: 1; font-size: 11px; color: #6366f1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; }
 .btn-tiny {
   padding: 4px 10px; background: #f5f3ff; border: 1px solid #ddd;
   border-radius: 6px; color: #6366f1; cursor: pointer; font-size: 11px;
 }
 .btn-tiny:hover { background: #6366f1; color: #fff; border-color: #6366f1; }
-
-.loading { text-align: center; padding: 40px; color: #999; font-size: 13px; }
-.empty { text-align: center; padding: 40px; color: #999; font-size: 13px; }
 .footer {
   text-align: center; padding: 6px; font-size: 10px; color: #ccc;
   background: #fff; border-top: 1px solid #eee; flex-shrink: 0;
 }
-
 @keyframes shake {
   0%,100% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
   75% { transform: translateX(5px); }
 }
-
 @media (max-width: 600px) {
+  .search-bar-center { flex-direction: column; }
+  .search-bar-center button { width: 100%; }
+  .site-grid { gap: 8px; }
+  .site-card { padding: 10px 4px; }
+  .site-name { font-size: 13px; }
   .search-bar { padding: 10px; }
   .search-bar input { padding: 10px 12px; font-size: 13px; }
   .search-bar button { padding: 10px 18px; font-size: 13px; }
-  .result-cover { width: 65px; height: 88px; }
-  .result-title { font-size: 14px; }
 }
