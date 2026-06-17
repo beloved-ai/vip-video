@@ -31,30 +31,42 @@
     <div class="center-area">
       <div class="hero-icon">🎬</div>
       <h2 class="hero-title">搜索你想看的剧</h2>
-      <p class="hero-sub">输入剧名，选择站点，一键搜索播放</p>
+      <p class="hero-sub">输入剧名，选择平台搜索，复制链接后用网址解析播放</p>
       <div class="search-bar-center">
         <input type="text" id="searchInput" placeholder="输入剧名，如：庆余年、繁花、三体..." />
-        <button onclick="searchAndOpen()">🔍 搜索</button>
       </div>
-      <div class="site-grid">
-        <button class="site-card active" data-site="https://www.360zy.com/vodsearch/-------------.html?wd=" onclick="selectSite(this)">
-          <span class="site-name">360</span>
-          <span class="site-desc">多线路</span>
+      <div class="platform-grid">
+        <button class="platform-card" onclick="searchPlatform('tencent')">
+          <span class="platform-icon">🐧</span>
+          <span class="platform-name">腾讯视频</span>
         </button>
-        <button class="site-card" data-site="https://subo988.com/search.html?wd=" onclick="selectSite(this)">
-          <span class="site-name">速播</span>
-          <span class="site-desc">播放快</span>
+        <button class="platform-card" onclick="searchPlatform('iqiyi')">
+          <span class="platform-icon">🥝</span>
+          <span class="platform-name">爱奇艺</span>
         </button>
-        <button class="site-card" data-site="https://www.wlzy.tv/vodsearch/-------------.html?wd=" onclick="selectSite(this)">
-          <span class="site-name">卧龙</span>
-          <span class="site-desc">高清源</span>
+        <button class="platform-card" onclick="searchPlatform('youku')">
+          <span class="platform-icon">▶️</span>
+          <span class="platform-name">优酷</span>
         </button>
-        <button class="site-card" data-site="https://www.tkzyw.com/vodsearch/-------------.html?wd=" onclick="selectSite(this)">
-          <span class="site-name">天空</span>
-          <span class="site-desc">资源全</span>
+        <button class="platform-card" onclick="searchPlatform('mgtv')">
+          <span class="platform-icon">🥭</span>
+          <span class="platform-name">芒果TV</span>
+        </button>
+        <button class="platform-card" onclick="searchPlatform('bilibili')">
+          <span class="platform-icon">📺</span>
+          <span class="platform-name">B站</span>
         </button>
       </div>
-      <p class="hint-text">💡 搜不到？换一个站点再试</p>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span> 输入剧名</div>
+        <div class="step-arrow">→</div>
+        <div class="step"><span class="step-num">2</span> 选择平台搜索</div>
+        <div class="step-arrow">→</div>
+        <div class="step"><span class="step-num">3</span> 复制视频链接</div>
+        <div class="step-arrow">→</div>
+        <div class="step"><span class="step-num">4</span> 切换到网址解析播放</div>
+      </div>
+      <p class="hint-text">💡 提示：在平台找到视频后，复制浏览器地址栏的链接，粘贴到"网址解析"模式即可播放</p>
     </div>
   </div>
 
@@ -67,9 +79,7 @@
     <div class="source-row">
       <span class="source-label">解析源:</span>
       <button class="source-chip active" data-src="https://jx.xmflv.com/?url=" onclick="switchSource(this)">XMFLV</button>
-      <button class="source-chip" data-src="https://jx.playerjy.com/?url=" onclick="switchSource(this)">备用1</button>
-      <button class="source-chip" data-src="https://www.yemu.xyz/?url=" onclick="switchSource(this)">备用2</button>
-      <button class="source-chip" data-src="https://jx.m3u8.tv/jiexi/?url=" onclick="switchSource(this)">备用3</button>
+      <button class="source-chip" data-src="https://www.yemu.xyz/?url=" onclick="switchSource(this)">备用1</button>
       <a class="source-chip link" href="https://www.iqiyi.com" target="_blank">爱奇艺</a>
       <a class="source-chip link" href="https://v.qq.com" target="_blank">腾讯</a>
       <a class="source-chip link" href="https://www.youku.com" target="_blank">优酷</a>
@@ -78,7 +88,7 @@
       <div id="urlPlaceholder" class="placeholder">
         <div class="placeholder-icon">📺</div>
         <p>粘贴视频网址，点击播放</p>
-        <p class="sub">支持爱奇艺、腾讯视频、优酷等主流平台</p>
+        <p class="sub">支持爱奇艺、腾讯视频、优酷等主流平台VIP内容解析</p>
       </div>
       <iframe id="urlFrame" class="player-frame" frameborder="0" allowfullscreen
               allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
