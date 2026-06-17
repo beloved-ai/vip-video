@@ -1,28 +1,26 @@
 // ==================== VIP追剧神器 ====================
 
-let currentMode = 'search';
 let currentSource = 'https://jx.xmflv.com/?url=';
-let currentSite = 'https://www.360zy.com/vodsearch/-------------.html?wd=';
 let currentUrl = '';
+
+// 平台搜索地址模板
+const PLATFORMS = {
+  tencent:  'https://v.qq.com/x/search/?q=',
+  iqiyi:    'https://so.iqiyi.com/so/q_',
+  youku:    'https://so.youku.com/search_video/q_',
+  mgtv:     'https://so.mgtv.com/so/k-',
+  bilibili: 'https://search.bilibili.com/all?keyword='
+};
 
 // ==================== 初始化 ====================
 document.addEventListener('DOMContentLoaded', () => {
-  const savedSource = localStorage.getItem('vip_source');
-  if (savedSource) currentSource = savedSource;
-  const savedSite = localStorage.getItem('vip_site');
-  if (savedSite) currentSite = savedSite;
-  const savedMode = localStorage.getItem('vip_mode');
-  if (savedMode) switchMode(savedMode);
-
-  document.querySelectorAll('[data-src]').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.src === currentSource);
+  const s = localStorage.getItem('vip_source');
+  if (s) currentSource = s;
+  document.querySelectorAll('[data-src]').forEach(b => {
+    b.classList.toggle('active', b.dataset.src === currentSource);
   });
-  document.querySelectorAll('[data-site]').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.site === currentSite);
-  });
-
   document.getElementById('searchInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') searchAndOpen();
+    if (e.key === 'Enter') searchPlatform('tencent');
   });
   document.getElementById('urlInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') playVideo();
@@ -31,8 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ==================== 模式切换 ====================
 function switchMode(mode) {
-  currentMode = mode;
-  localStorage.setItem('vip_mode', mode);
   document.querySelectorAll('.tab').forEach(t => {
     t.classList.toggle('active', t.textContent.includes(mode === 'search' ? '搜索' : '网址'));
   });
@@ -41,20 +37,15 @@ function switchMode(mode) {
 }
 
 // ==================== 搜索模式 ====================
-function selectSite(btn) {
-  document.querySelectorAll('.site-card').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  currentSite = btn.dataset.site;
-  localStorage.setItem('vip_site', currentSite);
-}
-
-function searchAndOpen() {
+function searchPlatform(platform) {
   const keyword = document.getElementById('searchInput').value.trim();
   if (!keyword) {
     shake('searchInput');
     return;
   }
-  const searchUrl = currentSite + encodeURIComponent(keyword);
+  const baseUrl = PLATFORMS[platform];
+  if (!baseUrl) return;
+  const searchUrl = baseUrl + encodeURIComponent(keyword);
   window.open(searchUrl, '_blank');
 }
 
