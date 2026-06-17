@@ -42,11 +42,12 @@ body {
 /* 搜索模式 - 居中 */
 .center-area {
   flex: 1; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; padding: 20px;
+  align-items: center; padding: 20px 16px;
+  overflow-y: auto;
 }
-.hero-icon { font-size: 52px; margin-bottom: 10px; }
+.hero-icon { font-size: 48px; margin-bottom: 8px; }
 .hero-title { font-size: 20px; font-weight: 700; color: #222; margin-bottom: 4px; }
-.hero-sub { font-size: 13px; color: #999; margin-bottom: 18px; }
+.hero-sub { font-size: 13px; color: #999; margin-bottom: 16px; text-align: center; line-height: 1.5; }
 .search-bar-center {
   display: flex; gap: 8px; width: 100%; max-width: 480px; margin-bottom: 20px;
 }
@@ -59,35 +60,43 @@ body {
   border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
 }
 .search-bar-center input::placeholder { color: #bbb; }
-.search-bar-center button {
-  padding: 13px 24px; background: linear-gradient(135deg, #6366f1, #a855f7);
-  border: none; border-radius: 12px; color: #fff;
-  font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
-}
 
-/* 站点卡片 */
-.site-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 10px; width: 100%; max-width: 480px; margin-bottom: 14px;
+/* 平台卡片 */
+.platform-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 10px; width: 100%; max-width: 480px; margin-bottom: 20px;
 }
-.site-card {
-  display: flex; flex-direction: column; align-items: center; gap: 2px;
-  padding: 14px 6px; background: #fff;
-  border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer;
+.platform-card {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 16px 6px; background: #fff;
+  border: 2px solid #e5e7eb; border-radius: 14px; cursor: pointer;
   transition: all 0.2s;
 }
-.site-card:hover {
+.platform-card:hover {
   border-color: #6366f1; transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(99,102,241,0.1);
 }
-.site-card.active {
-  background: linear-gradient(135deg, #6366f1, #a855f7); border-color: transparent;
+.platform-card:active { transform: scale(0.96); }
+.platform-icon { font-size: 28px; }
+.platform-name { font-size: 12px; font-weight: 600; color: #444; }
+
+/* 步骤提示 */
+.steps {
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 14px; flex-wrap: wrap; justify-content: center;
 }
-.site-card.active .site-name { color: #fff; }
-.site-card.active .site-desc { color: rgba(255,255,255,0.7); }
-.site-name { font-size: 14px; font-weight: 600; color: #333; }
-.site-desc { font-size: 11px; color: #999; }
-.hint-text { font-size: 12px; color: #bbb; }
+.step {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 12px; color: #666;
+}
+.step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: #fff; font-size: 11px; font-weight: 700;
+}
+.step-arrow { color: #ccc; font-size: 12px; }
+.hint-text { font-size: 12px; color: #aaa; text-align: center; line-height: 1.6; max-width: 480px; }
 
 /* 网址模式 */
 .search-bar { display: flex; gap: 8px; padding: 12px; flex-shrink: 0; }
@@ -152,11 +161,17 @@ body {
   75% { transform: translateX(5px); }
 }
 @media (max-width: 600px) {
-  .search-bar-center { flex-direction: column; }
-  .search-bar-center button { width: 100%; }
-  .site-grid { gap: 8px; }
-  .site-card { padding: 10px 4px; }
-  .site-name { font-size: 13px; }
+  .hero-icon { font-size: 40px; }
+  .hero-title { font-size: 17px; }
+  .hero-sub { font-size: 12px; }
+  .search-bar-center input { padding: 12px 14px; font-size: 13px; }
+  .platform-grid { gap: 8px; }
+  .platform-card { padding: 12px 4px; }
+  .platform-icon { font-size: 24px; }
+  .platform-name { font-size: 11px; }
+  .steps { gap: 4px; }
+  .step { font-size: 11px; }
+  .step-arrow { font-size: 10px; }
   .search-bar { padding: 10px; }
   .search-bar input { padding: 10px 12px; font-size: 13px; }
   .search-bar button { padding: 10px 18px; font-size: 13px; }
