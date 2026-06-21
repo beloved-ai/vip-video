@@ -97,6 +97,14 @@ body {
 }
 .step-arrow { color: #ccc; font-size: 12px; }
 .hint-text { font-size: 12px; color: #aaa; text-align: center; line-height: 1.6; max-width: 480px; }
+.bookmark-link {
+  display: inline-block; margin-top: 12px;
+  padding: 10px 20px; background: #fff;
+  border: 2px solid #6366f1; border-radius: 10px;
+  color: #6366f1; font-size: 13px; font-weight: 600;
+  text-decoration: none; transition: all 0.2s;
+}
+.bookmark-link:hover { background: #6366f1; color: #fff; }
 
 /* 网址模式 */
 .search-bar { display: flex; gap: 8px; padding: 12px; flex-shrink: 0; }
