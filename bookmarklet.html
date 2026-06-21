@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP追剧神器 - 一键解析</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+  <style>
+    .setup-page {
+      max-width: 480px; margin: 0 auto; padding: 20px;
+    }
+    .setup-card {
+      background: #fff; border-radius: 14px; padding: 20px;
+      margin-bottom: 16px; border: 1px solid #eee;
+    }
+    .setup-card h3 {
+      font-size: 16px; color: #333; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .setup-card p {
+      font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 10px;
+    }
+    .bookmark-btn {
+      display: block; width: 100%; padding: 14px;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      border: none; border-radius: 12px; color: #fff;
+      font-size: 16px; font-weight: 700; cursor: pointer;
+      text-align: center; text-decoration: none;
+      margin: 16px 0;
+    }
+    .bookmark-btn:hover { opacity: 0.9; }
+    .step-list { list-style: none; padding: 0; }
+    .step-list li {
+      display: flex; gap: 10px; padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0; font-size: 13px; color: #555;
+      line-height: 1.5;
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 24px; height: 24px; border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      color: #fff; font-size: 12px; font-weight: 700; flex-shrink: 0;
+    }
+    .code-block {
+      background: #f5f5f5; border-radius: 8px; padding: 12px;
+      font-family: monospace; font-size: 11px; color: #333;
+      word-break: break-all; margin: 10px 0;
+    }
+    .tip {
+      background: #f5f3ff; border-left: 3px solid #6366f1;
+      padding: 10px 14px; border-radius: 0 8px 8px 0;
+      font-size: 12px; color: #555; margin: 10px 0;
+    }
+    .back-link {
+      display: inline-block; color: #6366f1; font-size: 13px;
+      text-decoration: none; margin-bottom: 16px;
+    }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <span class="logo">🎬</span>
+      <h1>VIP追剧神器</h1>
+    </div>
+    <span class="tag">仅供学习</span>
+  </header>
+
+  <div style="flex:1;overflow-y:auto;background:#f0f2f5;">
+    <div class="setup-page">
+      <a href="index.html" class="back-link">← 返回首页</a>
+
+      <div class="setup-card">
+        <h3>📌 什么是"一键解析"？</h3>
+        <p>在手机浏览器里添加一个书签按钮。以后在任何视频网站（爱奇艺、腾讯视频、优酷等）看到想看的视频时，点一下这个按钮，就能自动解析播放（含VIP内容）。</p>
+      </div>
+
+      <div class="setup-card">
+        <h3>⚡ 一键添加</h3>
+        <p>长按下面的按钮，选择"添加到书签"或"收藏链接"：</p>
+        <a class="bookmark-btn"
+           href="javascript:void(window.open('https://jx.xmflv.com/?url='+encodeURIComponent(location.href)))">
+          🎬 VIP解析播放
+        </a>
+        <div class="tip">💡 如果上面的按钮无法长按，请手动添加（见下方步骤）</div>
+      </div>
+
+      <div class="setup-card">
+        <h3>📋 手动添加步骤</h3>
+        <ul class="step-list">
+          <li>
+            <span class="step-num">1</span>
+            <span>复制下方的代码（长按选中复制）</span>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <span>打开手机浏览器，添加一个新书签</span>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <span>书签名称填：<strong>VIP解析</strong></span>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <span>书签网址/URL 粘贴下面这段代码</span>
+          </li>
+          <li>
+            <span class="step-num">5</span>
+            <span>保存书签，完成！</span>
+          </li>
+        </ul>
+        <div class="code-block">javascript:void(window.open('https://jx.xmflv.com/?url='+encodeURIComponent(location.href)))</div>
+      </div>
+
+      <div class="setup-card">
+        <h3>🎬 使用方法</h3>
+        <ul class="step-list">
+          <li>
+            <span class="step-num">1</span>
+            <span>打开爱奇艺/腾讯视频/优酷，搜索想看的剧</span>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <span>点进视频播放页面</span>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <span>点击浏览器书签栏里的 <strong>"VIP解析"</strong></span>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <span>自动跳到解析页面，视频开始播放（含VIP内容）</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="setup-card">
+        <h3>🔄 如果解析失败</h3>
+        <p>解析接口有时效性，如果一个不行就换一个。回到首页的"网址解析"模式切换解析源。</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>VIP追剧神器 · 仅供学习使用</span>
+  </footer>
+</body>
+</html>
