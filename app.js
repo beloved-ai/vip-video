@@ -136,7 +136,7 @@ async function fetchEpisodes(url) {
     }
   } catch (e) {
     console.error('获取集数失败:', e);
-    list.innerHTML = '<span style="color:#999;font-size:12px;">获取集数失败</span>';
+    list.innerHTML = `<span style="color:#ef4444;font-size:12px;">获取集数失败: ${e.message}</span>`;
   }
 }
 
@@ -147,8 +147,27 @@ async function fetchTencentEpisodes(url) {
   if (!cid) return { title: '', episodes: [] };
 
   const apiUrl = `https://node.video.qq.com/x/api/float_vinfo2?cmd=33&otype=json&cid=${cid}`;
-  const resp = await fetch(PROXY + encodeURIComponent(apiUrl), { signal: AbortSignal.timeout(10000) });
-  const data = await resp.json();
+  let data = null;
+
+  // 方式1: 通过 CORS 代理
+  try {
+    const resp = await fetch(PROXY + encodeURIComponent(apiUrl), { signal: AbortSignal.timeout(8000) });
+    data = await resp.json();
+  } catch (e) {
+    console.log('代理请求失败，尝试直连:', e.message);
+  }
+
+  // 方式2: 直连（可能被 CORS 阻止）
+  if (!data) {
+    try {
+      const resp = await fetch(apiUrl, { signal: AbortSignal.timeout(8000) });
+      data = await resp.json();
+    } catch (e) {
+      console.log('直连也失败:', e.message);
+    }
+  }
+
+  if (!data) return { title: '', episodes: [] };
 
   if (data.c && data.c.video_ids) {
     return {
