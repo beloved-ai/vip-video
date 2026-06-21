@@ -85,11 +85,19 @@
       <a class="source-chip link" href="https://v.qq.com" target="_blank">腾讯</a>
       <a class="source-chip link" href="https://www.youku.com" target="_blank">优酷</a>
     </div>
+    <!-- 集数列表 -->
+    <div id="episodeBar" class="episode-bar" style="display:none;">
+      <div class="episode-header">
+        <span id="episodeTitle" class="episode-title"></span>
+        <span id="episodeCount" class="episode-count"></span>
+      </div>
+      <div id="episodeList" class="episode-list"></div>
+    </div>
     <div class="player-frame-wrap">
       <div id="urlPlaceholder" class="placeholder">
         <div class="placeholder-icon">📺</div>
         <p>粘贴视频网址，点击播放</p>
-        <p class="sub">支持爱奇艺、腾讯视频、优酷等主流平台VIP内容解析</p>
+        <p class="sub">粘贴某一集的链接，自动获取全部集数，自由切换</p>
       </div>
       <iframe id="urlFrame" class="player-frame" frameborder="0" allowfullscreen
               allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
